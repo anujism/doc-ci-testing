@@ -1,0 +1,11 @@
+name: Review Doc
+run-name: ${{ github.actor }} is syncing doc and code
+on: [pull_request]
+jobs:
+  Print-On-Push:
+    runs-on: macos-12
+    steps:
+      - name: Sync Docs
+        uses: knowl-doc/sync-docs@master
+        with:
+          knowl_api_key: ${{secrets.KNOWL_API_KEY}}      
