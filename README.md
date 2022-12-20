@@ -13,6 +13,10 @@
 ### testing doc ci
 #### testing doc ci
 
+# doc-ci-testing
+### testing doc ci
+#### testing doc ci
+
 
 
 test 1
@@ -31,9 +35,14 @@ line6
 line7
 line8
 
+# doc-ci-testing
+### testing doc ci
+#### testing doc ci
+
 
 test 4
 
 test 5
 test 6
 test 7
+test 7*
