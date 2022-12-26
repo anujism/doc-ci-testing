@@ -9,4 +9,4 @@ jobs:
         uses: knowl-doc/sync-docs@master
         with:
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
-          action_type: 0 #0 - for blocker, 1 for non-blocker
+          action_type: 1 #0 - for blocker, 1 for non-blocker
