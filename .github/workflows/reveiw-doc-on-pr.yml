@@ -8,4 +8,5 @@ jobs:
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
-          knowl_api_key: ${{secrets.KNOWL_API_KEY}}      
+          knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
+          action_type: 0 #0 - for blocker, 1 for non-blocker
