@@ -1,5 +1,7 @@
 affected_files = {}
 affected_lines = []
+one
+two
 test 1
 test 2
 value = {'page_id': "123",'page_link': "knowl.io",'page_title':"test local", 'page_status': 1, 'snippet_code_lines':"32-45" }
@@ -11,9 +13,11 @@ affected_lines.append({'page_id': "123",'page_link': "knowl.io",'page_title':"te
 alpha
 beta gamma
 
+three four
 print(f'affected_lines:: {type (affected_lines)}')
 print(f'affected_lines:: {type (affected_lines[0])}')
 
 adding a new filea
 asdfsfsdf
 hello
+
