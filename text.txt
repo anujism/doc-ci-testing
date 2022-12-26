@@ -7,12 +7,13 @@ i = 0
 
 affected_lines.append({'page_id': "123",'page_link': "knowl.io",'page_title':"test local", 'page_status': 1, 'snippet_code_lines':"32-45" })
 
-#affected_files[str(k)] = affected_lines
-alpha
-beta gamma
+#affected_files[str(k)]a = affected_lines
+alphaa
+beta gammaa
 
+sdsad
 print(f'affected_lines:: {type (affected_lines)}')
-print(f'affected_lines:: {type (affected_lines[0])}')
+print(f'adasdffected_lines:: {type (affected_lines[0])}')
 
 adding a new filea
 asdfsfsdf
