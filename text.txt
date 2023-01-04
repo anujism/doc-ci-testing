@@ -14,6 +14,12 @@ alpha
 beta gamma
 one
 two
+adding new lines
+more new lines
+add too many new lines
+four many
+five many
+six many
 print(f'affected_lines:: {type (affected_lines)}')
 print(f'affected_lines:: {type (affected_lines[0])}')
 
