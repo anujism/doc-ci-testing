@@ -8,7 +8,6 @@ jobs:
       - name: Checking out code
         uses: actions/checkout@v2
         with:
-          ref: "refs/pull/${{ github.event.number }}/merge"
           fetch-depth: 0
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
