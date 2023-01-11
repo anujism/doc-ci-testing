@@ -2,6 +2,10 @@ affected_files = {}
 affected_lines = []
 test 1.1
 
+line above 1
+line above 2
+line above 3
+line above 4
 affected_lines.append({'page_id': "123",'page_link': "knowl.io",'page_title':"test local", 'page_status': 1, 'snippet_code_lines':"32-45" })
 alpha
 adding new lines
