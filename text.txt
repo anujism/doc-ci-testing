@@ -2,26 +2,7 @@ affected_files = {}
 affected_lines = []
 test 1.1
 
-line above 1
-line above 2
-line above 3
-line above 4
-affected_lines.append({'page_id': "123",'page_link': "knowl.io",'page_title':"test local", 'page_status': 1, 'snippet_code_lines':"32-45" })
-alpha
-adding new lines
-more new lines
 
-add too many new lines
-beta gamma
-one
-new line added for ankur testing..
-two
-more line added 1
-more line added 2
-print(f'affected_lines:: {type (affected_lines)}')
-print(f'affected_lines:: {type (affected_lines[0])}')
-
-adding a new filea
 asdfsfsdf
 hello
 ------ lets add new lines here----
