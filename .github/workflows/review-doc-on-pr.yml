@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ github.event }}
+          echo ${{ github.event_name }}
   pr_doc_sync:
     if: github.event == 'pull_request'
     runs-on: ubuntu-latest
