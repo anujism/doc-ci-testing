@@ -1,4 +1,4 @@
-name: Review Doc
+name: Review Doc on PR
 run-name: ${{ github.actor }} is syncing doc and code
 on: [pull_request]
 jobs:
