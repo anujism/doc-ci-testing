@@ -20,7 +20,7 @@ jobs:
           action_type: 0 #0 - for blocker, 1 for non-blocker
    pr_commented_doc_update_not_required:
     name: PR comment doc update not required
-    if: github.event.comment.body == 'Doc Update Not Required.'
+    if: github.event.comment.body == 'Doc Update Not Required'
     runs-on: ubuntu-latest
     steps:
       - run: |
