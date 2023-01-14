@@ -1,4 +1,4 @@
-name: Review Doc on PR
+name: Review Doc on PR Comment
 run-name: ${{ github.actor }} is syncing doc and code
 on: 
   issue_comment:
