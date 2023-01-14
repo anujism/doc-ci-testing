@@ -1,8 +1,12 @@
 name: Review Doc on PR
 run-name: ${{ github.actor }} is syncing doc and code
-on: [pull_request]
+on: 
+  pull_request:
+  issue_comment:
+    types: [created]
 jobs:
-  Print-On-Push:
+  pr_doc_sync:
+    if: github.event == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
@@ -14,3 +18,23 @@ jobs:
         with:
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
+  pr_comment_sync:
+    if: github.event == 'issue_comment' && github.event.comment.body == 'Doc Updated. Sync Again'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Sync Docs
+        uses: knowl-doc/sync-docs@master
+        with:
+          knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
+          action_type: 0 #0 - for blocker, 1 for non-blocker
+  pr_commented_doc_update_nr:
+    if: github.event == 'issue_comment' && github.event.comment.body == 'Doc Update Not Required'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ github.event.comment.body }}
+          # run code to pass check
