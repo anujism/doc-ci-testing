@@ -5,11 +5,9 @@ on:
     types: [created]
 jobs:
    pr_commented:
-    # This job only runs for pull request comments
     name: PR comment
-    if: ${{ github.event.issue.pull_request }}
+    if: ${{ github.event.issue.pull_request }} && contains("Sync Again", ${{ github.event.comment.body }})
     runs-on: ubuntu-latest
-    if: "contains("Sync Again",${{ github.event.comment.body }})"
     steps:
       - run: |
           echo ${{ github.event.comment.body }}
