@@ -9,12 +9,20 @@ jobs:
     name: PR comment
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
+    if contains("Sync Again",${{ github.event.comment.body }})
     steps:
       - run: |
-          echo A comment on PR $NUMBER
-      - run: |
           echo ${{ github.event.comment.body }}
-        env:
-          NUMBER: ${{ github.event.issue.number }}  
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Sync Docs
+        uses: knowl-doc/sync-docs@master
+        with:
+          knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
+          action_type: 0 #0 - for blocker, 1 for non-blocker
+    
           
       
