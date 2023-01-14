@@ -9,7 +9,7 @@ jobs:
     name: PR comment
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
-    if contains("Sync Again",${{ github.event.comment.body }})
+    if: contains("Sync Again",${{ github.event.comment.body }})
     steps:
       - run: |
           echo ${{ github.event.comment.body }}
