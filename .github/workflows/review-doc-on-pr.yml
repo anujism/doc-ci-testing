@@ -29,7 +29,6 @@ jobs:
   pr_comment_sync:
     name: pr comment doc sync
     if: github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Updated. Sync Again' 
-    # not able to check event name and comment body condition
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
