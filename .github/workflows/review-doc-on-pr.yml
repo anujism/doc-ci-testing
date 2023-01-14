@@ -13,6 +13,7 @@ jobs:
       - run: |
           echo ${{ github.event.comment.body }}          
   pr_doc_sync:
+    name: pr doc sync
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
@@ -26,6 +27,7 @@ jobs:
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
   pr_comment_sync:
+    name: pr comment doc sync
     if: github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Updated. Sync Again' 
     # not able to check event name and comment body condition
     runs-on: ubuntu-latest
@@ -40,6 +42,7 @@ jobs:
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
   pr_commented_doc_update_nr:
+    name: pr comment doc update not required
     if: github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Update Not Required'
     runs-on: ubuntu-latest
     steps:
