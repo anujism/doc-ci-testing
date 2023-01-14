@@ -5,6 +5,11 @@ on:
   issue_comment:
     types: [created]
 jobs:
+  echo_info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ github.event }}
   pr_doc_sync:
     if: github.event == 'pull_request'
     runs-on: ubuntu-latest
