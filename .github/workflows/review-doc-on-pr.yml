@@ -1,9 +1,6 @@
 name: Review Doc on PR
 run-name: ${{ github.actor }} is syncing doc and code
-on: 
-  pull_request:
-  issue_comment:
-    types: [created]
+on: [pull_request, issue_comment]
 jobs:
   echo_info:
     runs-on: ubuntu-latest
