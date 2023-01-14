@@ -10,6 +10,8 @@ jobs:
     steps:
       - run: |
           echo ${{ github.event_name }}
+          echo ${{ github.event.comment.body }}
+          
   pr_doc_sync:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
