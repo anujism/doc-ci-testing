@@ -6,7 +6,7 @@ on:
 jobs:
    pr_commented:
     name: PR comment
-    if: ${{ github.event.issue.pull_request }} && !contains("Sync Again", ${{ github.event.comment.body }})
+    if: ${{ github.event.comment.body }} == 'Sync Again'
     runs-on: ubuntu-latest
     steps:
       - run: |
