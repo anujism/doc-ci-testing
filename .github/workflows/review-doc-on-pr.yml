@@ -1,14 +1,10 @@
 name: Review Doc on PR
 run-name: ${{ github.actor }} is syncing doc and code
-on: [pull_request, issue_comment]
+on: 
+  pull_request:
+  issue_comment:
+    types: [created, edited]
 jobs:
-  echo_info:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo ${{ github.event_name }}
-      - run: |
-          echo ${{ github.event.comment.body }}
   pr_doc_sync:
     name: pr doc sync
     if: github.event_name == 'pull_request'
