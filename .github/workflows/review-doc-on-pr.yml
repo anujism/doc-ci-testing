@@ -11,7 +11,7 @@ jobs:
       - run: |
           echo ${{ github.event_name }}
   pr_doc_sync:
-    if: github.event == 'pull_request'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
@@ -24,7 +24,7 @@ jobs:
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
   pr_comment_sync:
-    if: github.event == 'issue_comment' && github.event.comment.body == 'Doc Updated. Sync Again'
+    if: github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Updated. Sync Again'
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
@@ -37,7 +37,7 @@ jobs:
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
   pr_commented_doc_update_nr:
-    if: github.event == 'issue_comment' && github.event.comment.body == 'Doc Update Not Required'
+    if: github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Update Not Required'
     runs-on: ubuntu-latest
     steps:
       - run: |
