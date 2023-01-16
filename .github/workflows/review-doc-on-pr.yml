@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Checkout Pull Request
-        run: hub pr checkout ${{ github.event.issue.number }}
+        run: hub pr checkout ${{ github.event.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
