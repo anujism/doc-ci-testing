@@ -31,7 +31,7 @@ jobs:
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
-          event_name: ${{github.event_name}}
+          event_name: ${{github.triggered_event}}
           comment_text: ${{github.event.comment.body}}
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
