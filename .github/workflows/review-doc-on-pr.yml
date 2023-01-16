@@ -1,6 +1,6 @@
 name: Review Doc on PR
 run-name: ${{ github.actor }} is syncing doc and code
-on: [issue_comment]
+on: [pull_request, issue_comment]
 jobs:
   pr_comment_sync:
     name: pr comment doc sync
