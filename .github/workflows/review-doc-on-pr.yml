@@ -20,6 +20,8 @@ jobs:
       - run: |
           git --no-pager log -n 10
           git status
+          echo ${{ github.event.comment }}
+          echo $GITHUB_REF
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
