@@ -17,12 +17,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Checkout Pull Request
+        run: hub pr checkout ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           git --no-pager log -n 3
           git status
           echo ${{ github.event.comment }}
-          echo ${{ github.head_ref }}
-          echo ${{ github.base_ref }}
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
