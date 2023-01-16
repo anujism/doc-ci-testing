@@ -4,7 +4,7 @@ on: [pull_request, issue_comment]
 jobs:
   pr_doc_sync:
     name: pr doc sync
-    if: github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Updated. Sync Again')
+    if: github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && contains(github.event.comment.body, 'Doc Updated. Sync Again'))
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
@@ -18,10 +18,9 @@ jobs:
           action_type: 0 #0 - for blocker, 1 for non-blocker
   pr_commented_doc_update_nr:
     name: pr comment doc update not required
-    if: github.event_name == 'issue_comment' && github.event.comment.body == 'Doc Update Not Required'
+    if: github.event_name == 'issue_comment' && contains(github.event.comment.body, 'Doc Update Not Required')
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo ${{ github.event.comment.body }}
-          echo ${{ github.event_name }}
           # run code to pass check
