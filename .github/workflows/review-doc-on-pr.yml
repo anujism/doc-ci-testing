@@ -21,9 +21,6 @@ jobs:
     if: github.event_name == 'issue_comment' && contains(github.event.comment.body, 'Doc Updated. Sync Again')
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo ${{ github.event.comment.body }}
-          echo ${{ github.event_name }}
       - name: Checking out code
         uses: actions/checkout@v2
         with:
@@ -40,5 +37,4 @@ jobs:
     steps:
       - run: |
           echo ${{ github.event.comment.body }}
-          echo ${{ github.event_name }}
           # run code to pass check
