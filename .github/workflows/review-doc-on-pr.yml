@@ -18,10 +18,11 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          git --no-pager log -n 10
+          git --no-pager log -n 3
           git status
           echo ${{ github.event.comment }}
-          echo $GITHUB_REF
+          echo ${{ github.head_ref }}
+          echo ${{ github.base_ref }}
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
