@@ -22,16 +22,18 @@ jobs:
           fetch-depth: 0
       - name: Checkout Pull Request For Comment
         run: hub pr checkout ${{ github.event.issue.number }}
-        if: github.event.type == 'issue_comment'
+        if: github.event_name == 'issue_comment'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Checkout Pull Request
         run: hub pr checkout ${{ github.event.number }}
-        if: github.event.type == 'pull_request'
+        if: github.event_name == 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           git --no-pager log -n 3
           git status
-          echo ${{ github.event.comment }}
+          echo ${{ github.event.comment.body }}
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
