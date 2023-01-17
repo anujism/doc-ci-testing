@@ -20,8 +20,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Checkout Pull Request
+      - name: Checkout Pull Request For Comment
         run: hub pr checkout ${{ github.event.issue.number }}
+        if: github.event.type == 'issue_comment'
+      - name: Checkout Pull Request
+        run: hub pr checkout ${{ github.event.number }}
+        if: github.event.type == 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
