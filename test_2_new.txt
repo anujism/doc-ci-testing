@@ -5,4 +5,5 @@ test5
 too much testing.. m tired
 line3
 line4
+more lines in one file
 line5
