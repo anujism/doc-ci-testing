@@ -1,39 +1,17 @@
 name: Review Doc on PR
-run-name: ${{ github.actor }} is syncing doc and code
-on: [pull_request, issue_comment]
+run-name: ${{ github.run_id }} is syncing doc and code
+on: [pull_request]
 jobs:
   pr_doc_sync:
     name: pr doc sync
-    if: |
-      github.event_name == 'pull_request' ||
-      (
-        github.event_name == 'issue_comment' &&
-        github.event.issue.pull_request &&
-        (
-        startsWith(github.event.comment.body, 'document updated') ||
-        startsWith(github.event.comment.body, 'document update not required')
-        )
-      )
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Checkout Pull Request For Comment
-        run: hub pr checkout ${{ github.event.issue.number }}
-        if: github.event_name == 'issue_comment'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Checkout Pull Request
-        run: hub pr checkout ${{ github.event.number }}
-        if: github.event_name == 'pull_request'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Sync Docs
         uses: knowl-doc/sync-docs@master
         with:
-          triggered_event: ${{github.event_name}}
-          comment_text: ${{github.event.comment.body}}
           knowl_api_key: ${{secrets.KNOWL_API_KEY}}  
           action_type: 0 #0 - for blocker, 1 for non-blocker
