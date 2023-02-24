@@ -4,14 +4,14 @@ jobs:
   pr_commented:
     # This job only runs for pull request comments
     name: PR comment
-    if: ${{ github.event.issue.pull_request }}
+    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, 'knowl:rerun_workflow') }}
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo A comment on PR $PR_NUMBER - $COMMENT_BODY
         env:
           PR_NUMBER: ${{ github.event.issue.number }}
-          COMMENT_BODY: ${{ toJson(github.event) }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
