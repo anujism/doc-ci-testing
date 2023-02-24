@@ -11,7 +11,7 @@ jobs:
           echo A comment on PR $PR_NUMBER - $COMMENT_BODY
         env:
           PR_NUMBER: ${{ github.event.issue.number }}
-          COMMENT_BODY: ${{ github.event.issue.comment.body }}
+          COMMENT_BODY: ${{ toJson(github.event) }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
