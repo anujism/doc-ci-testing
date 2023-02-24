@@ -8,6 +8,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo A comment on PR $NUMBER
+          echo A comment on PR $PR_NUMBER
         env:
-          NUMBER: ${{ github.event.issue.number }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - run: |
+          pip install requests
+      - uses: jannekem/run-python-script-action@v1
+        with:
+          script: |
+            import requests
+            import os
+            git_token = os.getenv("GITHUB_TOKEN")
+            pull_number = os.getenv("GITHUB_PULL_NUMBER")
+            repository = os.getenv("GITHUB_REPO")
+            owner, repo_name = repository.split("/")
+            url = f"https://api.github.com/repos/{owner}/{repo_name}/actions/runs/4259051604/rerun"
+            headers = {"Authorization": f"Bearer {git_token}", "Accept": "application/vnd.github+json"}
+            response = requests.post(url=url, headers=headers)
+            print(response.content)
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+          GITHUB_PULL_NUMBER: ${{github.event.number}}
+          GITHUB_REPO: ${{github.repository}}
